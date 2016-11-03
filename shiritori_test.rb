@@ -7,6 +7,7 @@ class User
 	def initialize(user_input)
 		@user_input = user_input
 		@used_words = []
+		@gojuon = []
 	end
 
 	def csv_reader
@@ -34,27 +35,53 @@ class User
 	end
 
 	def rule_check(last_word)
-		if last_word == 'ん'
+		##
+		# => 最後の言葉が「ん」ではないか、使われた言葉を使っていないか、(ユーザの敗北). 五十音の中に収まっているか(ユーザに警告)をチェック.
+		# => !important 評価の順番が大切
+		#
+		## ユーザとしりとりが続くという意味でのstatus_number (=2)
+		CSV.foreach('csvdata/shiritori.csv') do |row|
+			@gojuon.push(row[0])
+		end
+
+		@gojuon.each do |word|
+			if word == last_word
+				puts 'hoge'
+				@status_number = 0
+				break;
+			else
+				@status_number = 2
+			end
+		end
+
+		# => 敗北するときは@status_number = 1です。
+		if last_word == 'ん' 
 			@status_number = 1
 		end 
+
 		@used_words.each do |word|
 			if word == @user_input
 				@status_number = 1
 			end
 		end
 
-		if @status_number != 1
+
+		unless @status_number == 1 || @status_number == 2
 		@status_number = 0
-		end
+		end	
 	end
 
 	def input_check
 		csv_reader #使われた言葉を配列に入れる
 		last_word = shaping_word #ユーザの入力を整形するメソッド
-		rule_check(last_word)
+		rule_check(last_word) 
 
 		if @status_number == 1
 			return 'あなたの負けです'
+		end
+
+		if @status_number == 2
+			return '五十音の中から発言してください'
 		end
 
 		if @status_number == 0
