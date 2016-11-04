@@ -11,16 +11,8 @@ class User
 	end
 
 	def csv_reader
-		tmp_csv_ary = []
-
 		CSV.foreach('csvdata/shiritori_used.csv') do |row|
-			tmp_csv_ary.push(row)
-		end
-
-		tmp_csv_ary.each do |row|
-			first_word,second_word = row[0],row[1]
-			@used_words.push(first_word)
-			@used_words.push(second_word)
+			@used_words.push(row[0])
 		end
 	end
 
@@ -46,7 +38,6 @@ class User
 
 		@gojuon.each do |word|
 			if word == last_word
-				puts 'hoge'
 				@status_number = 0
 				break;
 			else
@@ -60,11 +51,10 @@ class User
 		end 
 
 		@used_words.each do |word|
-			if word == @user_input
+			if word == @user_answer
 				@status_number = 1
 			end
 		end
-
 
 		unless @status_number == 1 || @status_number == 2
 		@status_number = 0
@@ -85,36 +75,75 @@ class User
 		end
 
 		if @status_number == 0
+			csv_writer(@user_answer)
 			return user_answer = @user_answer
 		end
 	end
 
+	def csv_writer(word)
+		tmp_ary = []
+		tmp_ary.push(word)
+		CSV.open('csvdata/shiritori_used.csv','a') do |used_words|			
+			used_words << tmp_ary
+		end
+	end
+end
+
+
+
+class Muno
+	def initialize(user_input)
+		@user_input = user_input
+		@used_words = []
+		@vocablary = {}
+	end
+
+	def csv_load
+		CSV.foreach('csvdata/shiritori_used.csv') do |row|
+			@used_words.push(row[0])
+		end
+	end
+
+	def making_hash
+		CSV.foreach('csvdata/shiritori.csv') do |row|
+			gojuon = row.shift
+			@vocablary[gojuon] = row
+		end
+	end
+
 	def response
+		##
+		# => status_numの言葉の最後を使っているっぽいので、流れが出来てから再度デバッグする形になる。
+		##
+		if @vocablary.has_key?(@user_input[-1])
+			@vocablary.each do |firstword,array|
+				if firstword == @user_input[-1]
+					return array
+				end
+			end
+		else
+			return ary = ['五十音にないですよ']
+		end
+	end
+
+	def muno_check
+		csv_load
+		making_hash
+		#print @vocablary
+		response_vriety_ary = response
 	end
 end
 
 puts '入力してください:'
-user_input = ARGV[0]
+user_input = gets
 user_data = User.new(user_input)
 data = user_data.input_check
 puts data
 
-
-class Muno
-	def initialize(muno_input,user_input)
-		@muno_input = muno_input
-		@user_input = user_input
-	end
-
-	def csv_load
-	end
-
-	def making_hash
-	end
-
-	def response
-	end
-end
+##ここから人工無脳側の処理を書く
+muno_data = Muno.new(data)
+response_ary = muno_data.muno_check
+puts response_ary[0]
 
 class ShiritoriFlow
 	def initialize(user_input,muno_input)
@@ -135,4 +164,5 @@ class ShiritoriFlow
 		end
 	end
 end
+
 
