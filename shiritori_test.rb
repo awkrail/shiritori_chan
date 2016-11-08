@@ -104,10 +104,12 @@ class Muno
 		end
 	end
 
-	def making_hash
+	def making_hash(turn)
+		if turn == 1
 		CSV.foreach('csvdata/shiritori.csv') do |row|
 			gojuon = row.shift
 			@vocablary[gojuon] = row
+		end
 		end
 	end
 
@@ -118,32 +120,38 @@ class Muno
 		if @vocablary.has_key?(@user_input[-1])
 			@vocablary.each do |firstword,array|
 				if firstword == @user_input[-1]
-					return array
+					response_data = array.shift
+					return response_data
+					# csvの最初のデータを消す。
 				end
 			end
-		else
-			return ary = ['五十音にないですよ']
 		end
 	end
 
-	def muno_check
+	def muno_check(turn)
 		csv_load
-		making_hash
-		#print @vocablary
-		response_vriety_ary = response
+		making_hash(turn)
+		print @vocablary
+		response_data = response
 	end
 end
 
-puts '入力してください:'
-user_input = gets
-user_data = User.new(user_input)
-data = user_data.input_check
-puts data
+@turn = 1
 
-##ここから人工無脳側の処理を書く
-muno_data = Muno.new(data)
-response_ary = muno_data.muno_check
-puts response_ary[0]
+loop do
+	puts @turn
+	puts '入力してください:'
+	user_input = gets
+	user_data = User.new(user_input)
+	data = user_data.input_check
+	##ここから人工無脳側の処理を書く
+	if @turn == 1
+	@muno_data = Muno.new(data) ##最初のターンだけは@vocabraryなどをinitするためにnewする。
+	end
+	response_data = @muno_data.muno_check(@turn)
+	puts response_data
+	@turn += 1
+end
 
 class ShiritoriFlow
 	def initialize(user_input,muno_input)
