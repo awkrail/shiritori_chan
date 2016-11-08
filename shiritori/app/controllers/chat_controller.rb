@@ -41,7 +41,23 @@ private
 
   def response
     user_obj = User.new(@user_input)
-    @user_message = user_obj.input_check
+    user_message = user_obj.input_check
+    ##
+    # => ユーザの敗北処理について。
+    ##
+    if user_message == 1001
+      user_obj.reset_csv
+      user_obj.one_to_zero_json
+      return 'あなたの負けです。'
+    end
+
+    if user_message == 1002
+      return '不適切な入力です。もう一度入力してください。'
+    end
+
+    muno_obj = Muno.new(user_message)
+    response_data = muno_obj.muno_check
+    return response_data
   end
   end
 
@@ -134,6 +150,14 @@ private
     def reset_csv
       CSV.open("#{Rails.root}/public/csvdata/shiritori_used.csv",'w') do |reset_csv|
         reset_csv << []
+      end
+    end
+
+    def one_to_zero_json
+      open("#{Rails.root}/public/csvdata/shiritori_turn.json", 'w') do |io|
+        tmp_json = {}
+        tmp_json['turn'] = 0
+        JSON.dump(tmp_json, io)
       end
     end
   end

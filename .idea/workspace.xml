@@ -26,8 +26,8 @@
             <file leaf-file-name="shiritori_test.rb" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/shiritori_test.rb">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="596">
-                    <caret line="173" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+                  <state relative-caret-position="176">
+                    <caret line="158" column="3" selection-start-line="158" selection-start-column="3" selection-end-line="158" selection-end-column="3" />
                     <folding />
                   </state>
                 </provider>
@@ -44,11 +44,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="chat_controller.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chat_controller.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/shiritori/app/controllers/chat_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            <state relative-caret-position="-450">
+              <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -66,36 +66,6 @@
       </file>
       <file leaf-file-name="muno_message.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shiritori/public/csvdata/muno_message.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shiritori.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shiritori/public/csvdata/shiritori.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-953">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shiritori_turn.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/shiritori/public/csvdata/shiritori_turn.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shiritori_used.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shiritori/public/csvdata/shiritori_used.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -130,9 +100,9 @@
         <option value="$PROJECT_DIR$/shiritori_test.rb" />
         <option value="$PROJECT_DIR$/csvdata/shiritori_used.csv" />
         <option value="$PROJECT_DIR$/csvdata/shiritori_turn.json" />
-        <option value="$PROJECT_DIR$/shiritori/app/controllers/chat_controller.rb" />
         <option value="$PROJECT_DIR$/shiritori/public/csvdata/shiritori_used.csv" />
         <option value="$PROJECT_DIR$/shiritori/public/csvdata/shiritori_turn.json" />
+        <option value="$PROJECT_DIR$/shiritori/app/controllers/chat_controller.rb" />
       </list>
     </option>
   </component>
@@ -143,10 +113,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1986" />
-    <option name="y" value="84" />
+    <option name="x" value="1942" />
+    <option name="y" value="60" />
     <option name="width" value="1155" />
-    <option name="height" value="993" />
+    <option name="height" value="967" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -390,15 +360,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1478572848344</updated>
-      <workItem from="1478572853874" duration="19336000" />
+      <workItem from="1478572853874" duration="20991000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19336000" />
+    <option name="totallyTimeSpent" value="20991000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1986" y="84" width="1155" height="993" extended-state="0" />
+    <frame x="1942" y="60" width="1155" height="967" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3030303" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -529,14 +499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shiritori_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="173" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/csvdata/shiritori_used.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -545,18 +507,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shiritori/app/controllers/chat_controller.rb">
+    <entry file="file://$PROJECT_DIR$/shiritori_test.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shiritori/public/csvdata/shiritori.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-953">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="176">
+          <caret line="158" column="3" selection-start-line="158" selection-start-column="3" selection-end-line="158" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -564,6 +518,22 @@
     <entry file="file://$PROJECT_DIR$/shiritori/public/csvdata/shiritori_used.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shiritori/public/csvdata/shiritori_turn.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shiritori/public/csvdata/shiritori.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-953">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -585,10 +555,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shiritori/public/csvdata/shiritori_turn.json">
+    <entry file="file://$PROJECT_DIR$/shiritori/app/controllers/chat_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+        <state relative-caret-position="-450">
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
           <folding />
         </state>
       </provider>
