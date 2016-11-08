@@ -1,0 +1,10 @@
+<%=  form_for('index', :method => :post, :remote => true, :id => "ajax_test1_form") do %>
+    <div class="field">
+      <p>Railsを動かすプログラミング言語は？</p>
+      <%= text_field_tag 'user[answer]' %>
+    </div>
+    <div id="ajax_display_test"></div>
+    <div class="actions">
+      <%= submit_tag '解答する' %>
+    </div>
+<% end %>
