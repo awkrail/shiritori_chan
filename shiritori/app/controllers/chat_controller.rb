@@ -57,7 +57,14 @@ private
 
     muno_obj = Muno.new(user_message)
     response_data = muno_obj.muno_check
-    return response_data
+
+    if response_data == 1003
+      user_obj.reset_csv
+      user_obj.one_to_zero_json
+      return @muno_response = '言葉が思いつきません。私の負けです。'
+    end
+
+    @muno_response = response_data
   end
   end
 
@@ -182,6 +189,16 @@ private
       gojuon = row.shift
       @vocabulary[gojuon] = row
     end
+
+    @vocabulary.each_value do |array|
+        @used_words.each do |used_word|
+          #@vocabularyのうちの配列の一文字ごとに
+          #@used_wordsの一文字ずつを消していく。(あったら)
+          array.delete_if{|word| word == used_word}
+        end
+    end
+
+    print @vocabulary
   end
 
   def response
@@ -191,8 +208,10 @@ private
     if @vocabulary.has_key?(@user_input[-1])
       @vocabulary.each do |first_word,array|
         if first_word == @user_input[-1]
-          response_data = array.shift
-          @vocabulary[first_word] = array #hashの値を更新する
+          if array.empty?
+            return 1003
+          end
+          response_data = array[0]
           return response_data
         end
       end
@@ -205,7 +224,18 @@ private
     #print @vocabulary
     response_data = response
     csv_writer
+    unless response_data == 1003
+      used_csv_writer(response_data)
+    end
     return response_data
+  end
+
+  def used_csv_writer(data)
+    tmp_ary = []
+    tmp_ary.push(data)
+    CSV.open("#{Rails.root}/public/csvdata/shiritori_used.csv",'a') do |used_words|
+      used_words << tmp_ary
+    end
   end
 
   def csv_writer
