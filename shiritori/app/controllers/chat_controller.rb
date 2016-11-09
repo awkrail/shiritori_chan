@@ -102,6 +102,14 @@ private
         @gojuon.push(row[0])
       end
 
+      @used_words.compact!
+      ##
+      # TODO: 相手の最後の言葉から返していない場合はもう一度返答してもらう.
+
+      if @used_words != [] && @used_words[-1][-1] != @user_answer[0]
+        return @status_number = 1002
+      end
+
       @gojuon.each do |word|
         if word == last_word
           @status_number = 0
@@ -142,7 +150,7 @@ private
 
       if @status_number == 0
         csv_writer(@user_answer)
-        return user_answer = @user_answer
+        @user_answer
       end
     end
 
@@ -168,7 +176,6 @@ private
       end
     end
   end
-
 
 
  class Muno
@@ -197,8 +204,6 @@ private
           array.delete_if{|word| word == used_word}
         end
     end
-
-    print @vocabulary
   end
 
   def response
@@ -223,11 +228,10 @@ private
     making_hash
     #print @vocabulary
     response_data = response
-    csv_writer
     unless response_data == 1003
       used_csv_writer(response_data)
     end
-    return response_data
+    response_data
   end
 
   def used_csv_writer(data)
@@ -238,12 +242,6 @@ private
     end
   end
 
-  def csv_writer
-    json_file_path = "#{Rails.root}/public/csvdata/muno_message.json"
-    open(json_file_path, 'w') do |io|
-      JSON.dump(@vocabulary, io)
-    end
-  end
  end
 end
 
