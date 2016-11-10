@@ -1,10 +1,42 @@
-<%=  form_for('index', :method => :post, :remote => true, :id => "ajax_test1_form") do %>
-    <div class="field">
-      <p>Railsを動かすプログラミング言語は？</p>
-      <%= text_field_tag 'user[answer]' %>
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">しりとり無能</a>
     </div>
-    <div id="ajax_display_test"></div>
-    <div class="actions">
-      <%= submit_tag '解答する' %>
-    </div>
-<% end %>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<div class="top-margin">
+</div>
+<div class="container">
+  <div id="message_log"></div>
+</div>
+
+<footer class="footer" id="footer_id">
+  <div class="container" id="submit_place">
+    <%=  form_for('index', :method => :post, :remote => true, :id => "ajax_test1_form") do %>
+        <div class="row">
+          <div class="col-md-9">
+            <%= text_area_tag 'user[answer]','',:size => "68x3" %>
+          </div>
+          <div class="col-md-3">
+            <%= submit_tag '送信', :class => 'btn btn-primary' %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</footer>
