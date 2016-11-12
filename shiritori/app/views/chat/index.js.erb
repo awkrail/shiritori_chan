@@ -1,3 +1,148 @@
 var chat = $("#message_log");
-chat.append('<p><%= @user_input %></p>');
-chat.append('<p><%= @muno_message %></p>');
+var row_div = $("<div></div>",{
+  "class": "row"
+});
+row_div.addClass('user_array');
+var col_div = $("<div></div>",{
+  "class": "col-md-6"
+});
+var col_div2 = $("<div></div>",{
+  "class": "col-md-6"
+});
+var panel_div = $("<div></div>",{
+  "class": "panel"
+});
+panel_div.addClass('panel-default');
+var panel_heading_div = $("<div></div>",{
+  "class": "panel-heading"
+});
+var panel_body = $("<div class='panel-body'><%= @user_input %></div>",{
+  "class": "panel-body"
+});
+
+row_div.append(col_div);
+row_div.append(col_div2);
+
+col_div2.append(panel_div);
+panel_div.append(panel_heading_div);
+panel_heading_div.html('あなた');
+panel_div.append(panel_body);
+chat.append(row_div);
+//---ここまで上でユーザ側のrowを作成
+
+var muno_row_div = $("<div></div>",{
+  "class": "row"
+});
+muno_row_div.addClass('muno_array');
+var muno_col_div = $("<div></div>",{
+  "class": "col-md-6"
+});
+var muno_col_div2 = $("<div></div>",{
+  "class": "col-md-6"
+});
+var muno_panel_div = $("<div></div>",{
+  "class": "panel"
+});
+muno_panel_div.addClass('panel-default');
+var muno_panel_heading_div = $("<div></div>",{
+  "class": "panel-heading"
+});
+
+var muno_panel_body = $("<div class='panel-body'>入力中...</div>");
+var muno_after_panel = $("<div class='panel-body'><%= @muno_message %></div>");
+
+setTimeout("one_char()",3000);
+//まった時の処理
+
+var num = 0;
+var str = muno_after_panel.text();			// 表示する文字
+
+
+function one_char() {
+  // TODO: ここのURLをうまく動かせるようにする。
+  muno_panel_body.text(str.substring(0, num++));
+  if (num <= str.length){
+    setTimeout("one_char()", 200);
+  }
+  if(num == str.length){
+    var syaberi = new SpeechSynthesisUtterance();
+    syaberi.volume = 1;
+    syaberi.rate = 1;
+    syaberi.pitch = 1;
+    syaberi.text = str;
+    syaberi.lang = 'ja-JP';
+    speechSynthesis.speak(syaberi);
+  }
+}
+
+if (!'SpeechSynthesisUtterance' in window) {
+  alert('Web Speech API には未対応です.');
+}
+
+
+
+
+muno_row_div.append(muno_col_div);
+muno_row_div.append(muno_col_div2);
+
+muno_col_div.append(muno_panel_div);
+muno_panel_div.append(muno_panel_heading_div);
+muno_panel_heading_div.html('むのうちゃん');
+muno_panel_div.append(muno_panel_body);
+chat.append(muno_row_div);
+
+
+// ここまで人工無脳側
+
+
+var oneset_array = $("<div></div>",{
+  "class": 'set_array'
+});
+
+oneset_array.append(row_div);
+oneset_array.append(muno_row_div);
+chat.append(oneset_array);
+
+var set_array = chat.children();
+//TODO: ここをJqueryオブジェクトにする。
+
+console.log(set_array);
+var new_array = [];
+
+for(var i=0; i < set_array.length; i++){
+  var isclass = set_array[i].className;
+  console.log(isclass);
+  if(isclass == 'set_array hideNode'){
+  }
+  else{
+    new_array.push(set_array[i]);
+  }
+}
+
+//console.log(new_array);
+
+var messagelog_height = chat.height();
+var windowheight = $(window).height();
+var navigation_height = $('#navigation').height();
+var footer_height = $('#footer_id').height();
+
+var wrapperheight = windowheight - (navigation_height + footer_height);
+
+//console.log(navigation_height);
+//console.log(footer_height);
+//console.log(wrapperheight);
+//console.log(messagelog_height);
+
+if ( messagelog_height > wrapperheight - 100 ){
+  new_array[0].classList.add('hideNode');
+  // TODO: これが動いていないようだ。
+  var hideNodes = $('.hideNode');
+  hideNodes.slideUp(400);
+  //set_array.shift();
+  //console.log(set_array);
+  //console.log(firstdiv);
+  //console.log('overしてるで');
+}
+
+
+
